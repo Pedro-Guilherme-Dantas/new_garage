@@ -1,4 +1,4 @@
-package br.ufr.imd.new_garage.entities;
+package br.ufrn.imd.new_garage.entities;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

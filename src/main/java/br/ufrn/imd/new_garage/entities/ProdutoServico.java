@@ -1,4 +1,4 @@
-package br.ufr.imd.new_garage.entities;
+package br.ufrn.imd.new_garage.entities;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_produtos_dos_servicos")
-public class ProdutosServicos {
+public class ProdutoServico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,8 +19,8 @@ public class ProdutosServicos {
     private Servico servico;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    @JoinColumn(name = "produto_id")
+    private Produto produto;
 
     public Long getId() {
         return id;
@@ -38,13 +38,11 @@ public class ProdutosServicos {
         this.servico = servico;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
-
-    
 }

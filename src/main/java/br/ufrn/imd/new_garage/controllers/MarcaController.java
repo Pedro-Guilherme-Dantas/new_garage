@@ -1,5 +1,4 @@
-package br.ufr.imd.new_garage.controllers;
-
+package br.ufrn.imd.new_garage.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,28 +9,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ufr.imd.new_garage.entities.Cliente;
-import br.ufr.imd.new_garage.repositories.ClienteRepository;
+import br.ufrn.imd.new_garage.entities.Marca;
+import br.ufrn.imd.new_garage.repositories.MarcaRepository;
 
 @RestController
-@RequestMapping(value = "/clientes")
-public class ClienteController {
+@RequestMapping(value = "/marca")
+public class MarcaController {
     @Autowired
-    public ClienteRepository repository;
+    public MarcaRepository repository;
 
     @GetMapping("/list")
-    public List<Cliente> findAll() {
-        List<Cliente> result = repository.findAll();
+    public List<Marca> findAll() {
+        List<Marca> result = repository.findAll();
         return result;
     }
     @GetMapping(value = "/{id}")
-    public Cliente findById(@PathVariable Long id) {
-        Cliente result = repository.findById(id).get();
+    public Marca findById(@PathVariable Long id) {
+        Marca result = repository.findById(id).get();
         return result;
     }
     @PostMapping("/insert")
-    public Cliente insert(@RequestBody Cliente cliente) {
-        Cliente result = repository.save(cliente);
+    public Marca insert(@RequestBody Marca marca) {
+        Marca result = repository.save(marca);
         return result;
     }   
 }

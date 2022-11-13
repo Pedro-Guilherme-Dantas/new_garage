@@ -1,4 +1,4 @@
-package br.ufr.imd.new_garage;
+package br.ufrn.imd.new_garage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
