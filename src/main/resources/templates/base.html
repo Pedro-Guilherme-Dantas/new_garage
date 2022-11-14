@@ -2,6 +2,7 @@
 	<meta charset="UTF-8" />
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -18,20 +19,34 @@
 		}
 		.navbar-newgarage {
 			font-family: 'Permanent Marker', cursive;
-			font-size: 2.0rem;
+			font-size: 3.0rem;
 			color: orange;
 		}
 		.navbar-newgarage li {
 				margin-right: 2rem;
+		}
+		.navbar-newgarage .dropdown-item {
+			font-size: 2.5rem
 		}
 		.logo {
 			width:200px;
 			background-color: orange;
 		}
 		
+		
 		body {
-			min-height: 100vh;
-			background-color: #7e7466;
+			min-height: 100vh;;
+		}
+		
+		#footer {
+			font-size: 1.5rem;
+			color: #fff;
+			background-color: #7d2606;
+		}
+		#footer a {
+			font-family: 'Permanent Marker', cursive;
+			color: #fff;
+			text-decoration: none;
 		}
 		
 		
@@ -87,3 +102,14 @@
 <div th:fragment="titulo(valor)" class="jumbotron mb-0">
 	<h1 class="display-4" th:text="${valor}"></h1>
 </div>
+
+
+<footer th:fragment="footer" id="footer" class="p-5">
+	<div class="text-center">
+		© 2022 Copyright:
+		<a href="https://github.com/Pedro-Guilherme-Dantas/new_garage">New Garage</a>
+	</div>
+</footer>
+
+
+
