@@ -1,0 +1,37 @@
+<head th:fragment="head">
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet"> 
+	<style>
+		.logo-container {
+			background-color: #7d2606;
+			color: #FFF;
+		}
+		.logo {
+			font-family: 'Rock Salt', cursive;
+			font-size: 2.5rem;
+		}
+		.logo-img {
+			width:200px;
+			background-color: orange;
+		}
+		
+		.amarelo1 { color: #fb9b04 }
+		.amarelo2 { color: #ecad43 }
+		.vinho { color: #7d2606 }
+		.cinza { color: #7e7466 }
+		.branco { color: #f7f1ed }
+		
+	</style>
+</head>orange
+
+<div th:fragment="logo" class="logo-container d-flex flex-row">
+	<img th:src="@{/images/garage.png}" class="logo-img"/>
+	<h1 class="logo ml-3 align-self-center amarelo1">New Garage</h1>
+</div>
+
+<div th:fragment="titulo(valor)" class="jumbotron mb-0">
+	<h1 class="display-4" th:text="${valor}"></h1>
+</div>
