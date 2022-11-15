@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,9 +21,16 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private double valor;
+    private String descricao;
     private Calendar data_inicio;
     private Calendar data_fim;
-
+    
+    @Enumerated(EnumType.STRING)
+    private EnumStatusServico statusServico;
+    
+    @Enumerated(EnumType.STRING)
+    private EnumTipoServico tipoServico;
+    
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
@@ -45,8 +54,16 @@ public class Servico {
     public void setValor(double valor) {
         this.valor = valor;
     }
+    
+    public String getDescricao() {
+		return descricao;
+	}
 
-    public Cliente getCliente() {
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Cliente getCliente() {
         return cliente;
     }
 
@@ -77,4 +94,20 @@ public class Servico {
     public void setData_fim(Calendar data_fim) {
         this.data_fim = data_fim;
     }
+
+	public EnumStatusServico getStatusServico() {
+		return statusServico;
+	}
+
+	public void setStatusServico(EnumStatusServico statusServico) {
+		this.statusServico = statusServico;
+	}
+
+	public EnumTipoServico getTipoServico() {
+		return tipoServico;
+	}
+
+	public void setTipoServico(EnumTipoServico tipoServico) {
+		this.tipoServico = tipoServico;
+	}
 }

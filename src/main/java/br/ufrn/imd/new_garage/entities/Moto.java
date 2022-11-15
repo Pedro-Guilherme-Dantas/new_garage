@@ -16,6 +16,7 @@ public class Moto {
     private Long id;
     private String placa;
     private int quilometragem;
+    private String modelo;
     private double cilindrada;
 
     @ManyToOne
@@ -44,7 +45,13 @@ public class Moto {
     public void setQuilometragem(int quilometragem) {
         this.quilometragem = quilometragem;
     }
-    public double getCilindrada() {
+    public String getModelo() {
+		return modelo;
+	}
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+	public double getCilindrada() {
         return cilindrada;
     }
     public void setCilindrada(double cilindrada) {
