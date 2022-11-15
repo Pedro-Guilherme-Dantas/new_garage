@@ -5,9 +5,16 @@
 	<body class="d-flex flex-column justify-content-between">
 		<div>
 			<div th:replace="base :: logo"></div>
-			<div>
-				<p>asdfadsfafd</p>
+			<!-- HOME CONTENT - BEGIN -->
+			<div class="container">
+				<p>Hello New Garage</p>
+				<p th:each="servico : ${servicos}">
+					servico
+				</p>
+				<p th:text="${servicos}"></p>
+				
 			</div>
+			<!-- HOME CONTENT - END -->
 		</div>
 		<div th:replace="base :: footer"></div>
 	</body>
