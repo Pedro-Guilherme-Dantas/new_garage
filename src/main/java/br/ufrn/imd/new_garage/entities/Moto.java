@@ -4,6 +4,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -19,14 +20,15 @@ public class Moto {
     private int ano;
     private int quilometragem;
     private double cilindrada;
+    private String urlImg;
 
     @ManyToOne
-    @JoinTable(name = "marca_id")
+    @JoinColumn(name = "marca_id")
     private Marca marca;
 
     @ManyToOne
-    @JoinTable(name = "cliente_id")
-    private Cliente proprietario;
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
     public Long getId() {
         return id;
@@ -64,16 +66,22 @@ public class Moto {
     public void setCilindrada(double cilindrada) {
         this.cilindrada = cilindrada;
     }
-    public Marca getMarca() {
+    public String getUrlImg() {
+		return urlImg;
+	}
+	public void setUrlImg(String urlImg) {
+		this.urlImg = urlImg;
+	}
+	public Marca getMarca() {
         return marca;
     }
     public void setMarca(Marca marca) {
         this.marca = marca;
     }
     public Cliente getProprietario() {
-        return proprietario;
+        return cliente;
     }
     public void setProprietario(Cliente proprietario) {
-        this.proprietario = proprietario;
+        this.cliente = proprietario;
     }
 }
