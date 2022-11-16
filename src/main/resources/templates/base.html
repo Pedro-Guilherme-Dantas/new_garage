@@ -48,6 +48,30 @@
 			color: #fff;
 			text-decoration: none;
 		}
+		.header-servico-pendente {
+			color: white;
+			background: darkred;
+		}
+		.header-servico-em_andamento {
+			color: white;
+			background: orange;
+		}
+		.header-servico-cancelado {
+			color: white;
+			background: darkgrey;
+		}
+		.header-servico-finalizado {
+			color: white;
+			background: darkolivegreen;
+		}
+		.card {
+			background-color: #F5F5FF;
+		}
+		#botao-add-elemento {
+			position: sticky;
+			top: 0;
+			float: right;
+		}
 		
 		
 		
@@ -103,6 +127,12 @@
 	<h1 class="display-4" th:text="${valor}"></h1>
 </div>
 
+<div th:fragment="botao-adicionar-element(texto, link)" id="botao-add-elemento" class="d-flex align-items-end flex-column">
+	<a class="btn btn-success btn-lg" role="button" th:href="${link}">
+		<i class="fa fa-plus" th:text="${' ' + texto}"></i>
+	</a>
+</div>
+
 
 <footer th:fragment="footer" id="footer" class="p-5">
 	<div class="text-center">
@@ -110,6 +140,3 @@
 		<a href="https://github.com/Pedro-Guilherme-Dantas/new_garage">New Garage</a>
 	</div>
 </footer>
-
-
-
