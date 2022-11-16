@@ -15,8 +15,9 @@ public class Moto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String placa;
-    private int quilometragem;
     private String modelo;
+    private int ano;
+    private int quilometragem;
     private double cilindrada;
 
     @ManyToOne
@@ -39,18 +40,24 @@ public class Moto {
     public void setPlaca(String placa) {
         this.placa = placa;
     }
+    public String getModelo() {
+		return modelo;
+	}
+    public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+	public int getAno() {
+		return ano;
+	}
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
     public int getQuilometragem() {
         return quilometragem;
     }
     public void setQuilometragem(int quilometragem) {
         this.quilometragem = quilometragem;
     }
-    public String getModelo() {
-		return modelo;
-	}
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
 	public double getCilindrada() {
         return cilindrada;
     }
