@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<div th:replace="base :: head"></div>
+	
+	<body class="d-flex flex-column justify-content-between">
+		<div>
+			<div th:replace="base :: logo"></div>
+			<!-- HOME CONTENT - BEGIN -->
+			<div class="container">
+				<div class="card mt-5 mb-5">
+					<form th:object="${servicoDTO}" class="card-body" action="/servico/create" method="POST">
+						<div class="form-row">
+							<div class="form-group col-12">
+								<label for="descricao">Serviço</label>
+								<textarea th:field="*{descricao}" th:errorClass="is-invalid" class="form-control" rows="3" placeholder="Adicione detalhes importantes para ajudar o mecânico que assumira o serviço."/>
+								<small>Descreve o que deve ser feito no serviço.</small>
+								<div class="invalid-feedback" th:errors="*{descricao}">
+									Erros na descrição do serviço
+								</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-4">
+								<label for="valor">Valor</label>
+								<input th:field="*{valor}" th:errorClass="is-invalid" class="form-control" placeholder="ex.: 155.50"/>
+								<div class="invalid-feedback" th:errors="*{valor}">
+									Error no valor do serviço
+								</div>
+							</div>
+							<div class="form-group col-4">
+								<label for="tipoServico">Tipo de serviço</label>
+								<select th:field="*{tipoServico}" class="form-control">
+									<option th:value="REVISAO" th:text="Revisão"></option>
+								    <option th:value="MANUNTENCAO" th:text="Manuntenção"></option>
+								</select>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-8">
+								<label for="tipoServico">Moto associada ao serviço</label>
+								<select th:field="*{tipoServico}" class="form-control">
+									<th:block th:each="moto : ${motos}">
+										<option th:value="${moto.id}" th:text="${'Proprietário: ' + moto.getProprietario().nome + ' - Moto: ' + moto.modelo + ' ' + #numbers.formatInteger(moto.cilindrada,1,'POINT') + 'cc ' + #numbers.formatInteger(moto.cilindrada,1,'POINT') + 'KM'}"></option>
+									</th:block>
+								</select>
+							</div>
+						</div>
+						<div class="form-row">
+							<div>
+								<button class="btn btn-lg btn-success ml-1" type="submit">Salvar</button>
+								<a class="btn btn-lg btn-danger" href="/servicos" role="button">Cancelar</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+	
+			<!-- HOME CONTENT - END -->
+		</div>
+		<div th:replace="base :: footer"></div>
+	</body>
+</html>
