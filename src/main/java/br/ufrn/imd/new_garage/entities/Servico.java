@@ -4,6 +4,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,6 +17,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_servicos")
 public class Servico {
+	static private HashMap<EnumStatusServico, String> tradutorStatusServico = new HashMap<EnumStatusServico, String>();
+	{
+		tradutorStatusServico.put(EnumStatusServico.FINALIZADO, "Finalizado");
+		tradutorStatusServico.put(EnumStatusServico.EM_ANDAMENTO, "Em andamento");
+		tradutorStatusServico.put(EnumStatusServico.PENDENTE, "Pendente");
+		tradutorStatusServico.put(EnumStatusServico.CANCELADO, "Cancelado");
+	}
+	
+	static private HashMap<EnumTipoServico, String> tradutorTipoServico = new HashMap<EnumTipoServico, String>();
+	{
+		tradutorTipoServico.put(EnumTipoServico.MANUNTENCAO, "Manuntenção");
+		tradutorTipoServico.put(EnumTipoServico.REVISAO, "Revisão");
+	}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -102,6 +116,26 @@ public class Servico {
 	public void setStatusServico(EnumStatusServico statusServico) {
 		this.statusServico = statusServico;
 	}
+	
+	public String getStatusServicoNome() {
+		return tradutorStatusServico.get(this.statusServico);
+	}
+	
+	public boolean ehEmAndamento() {
+		return this.statusServico == EnumStatusServico.EM_ANDAMENTO;
+	}
+	
+	public boolean ehPendente() {
+		return this.statusServico == EnumStatusServico.PENDENTE;
+	}
+	
+	public boolean ehFinalizado() {
+		return this.statusServico == EnumStatusServico.FINALIZADO;
+	}
+	
+	public boolean ehCancelado() {
+		return this.statusServico == EnumStatusServico.CANCELADO;
+	}
 
 	public EnumTipoServico getTipoServico() {
 		return tipoServico;
@@ -109,5 +143,9 @@ public class Servico {
 
 	public void setTipoServico(EnumTipoServico tipoServico) {
 		this.tipoServico = tipoServico;
+	}
+	
+	public String getTipoServicoNome() {
+		return tradutorTipoServico.get(this.tipoServico);
 	}
 }
