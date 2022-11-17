@@ -8,7 +8,7 @@
 			<!-- HOME CONTENT - BEGIN -->
 			<div class="container">
 				<div class="card mt-5 mb-5">
-					<form th:object="${servicoDTO}" class="card-body" action="/servico/create" method="POST">
+					<form th:object="${servicoDTO}" class="card-body" action="/servico/novo" method="POST">
 						<div class="form-row">
 							<div class="form-group col-12">
 								<label for="descricao">Serviço</label>
@@ -38,7 +38,7 @@
 						<div class="form-row">
 							<div class="form-group col-8">
 								<label for="tipoServico">Moto associada ao serviço</label>
-								<select th:field="*{tipoServico}" class="form-control">
+								<select th:field="*{motoId}" class="form-control">
 									<th:block th:each="moto : ${motos}">
 										<option th:value="${moto.id}" th:text="${'Proprietário: ' + moto.getProprietario().nome + ' - Moto: ' + moto.modelo + ' ' + #numbers.formatInteger(moto.cilindrada,1,'POINT') + 'cc ' + #numbers.formatInteger(moto.cilindrada,1,'POINT') + 'KM'}"></option>
 									</th:block>
