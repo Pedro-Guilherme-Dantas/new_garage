@@ -42,8 +42,8 @@
 		    </div>
 		    <h3 class="card-title">Cliente</h3>
 	  		<div class="row">
-	  			<p class="col-6">Nome: <span th:text="${servico.cliente.nome}"></span></p>
-	  			<p class="col-6">Telefone: <span th:text="${servico.cliente.telefone}"></span></p>
+	  			<p class="col-6">Nome: <span th:text="${servico.moto.getProprietario().nome}"></span></p>
+	  			<p class="col-6">Telefone: <span th:text="${servico.moto.getProprietario().telefone}"></span></p>
 	  		</div>
 	  	</div>
 	  	<div class="col-4">
