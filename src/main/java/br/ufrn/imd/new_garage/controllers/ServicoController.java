@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.ufrn.imd.new_garage.dto.ServicoDTO;
+import br.ufrn.imd.new_garage.entities.EnumStatusServico;
 import br.ufrn.imd.new_garage.entities.Moto;
 import br.ufrn.imd.new_garage.entities.Servico;
 import br.ufrn.imd.new_garage.repositories.MotoRepository;
@@ -35,7 +36,35 @@ public class ServicoController {
         model.addAttribute("servicos", result);
         return "home";
     }
-    
+
+    @GetMapping(value = "/finalizados")
+    public String findFinish(Model model) {
+        List<Servico> result = repository.findByStatusServico(EnumStatusServico.FINALIZADO);
+        model.addAttribute("servicos", result);
+        return "home";
+    }
+
+    @GetMapping(value = "/em_andamento")
+    public String findInProgress(Model model) {
+        List<Servico> result = repository.findByStatusServico(EnumStatusServico.EM_ANDAMENTO);
+        model.addAttribute("servicos", result);
+        return "home";
+    }
+
+    @GetMapping(value = "/pendentes")
+    public String findPending(Model model) {
+        List<Servico> result = repository.findByStatusServico(EnumStatusServico.PENDENTE);
+        model.addAttribute("servicos", result);
+        return "home";
+    }
+
+    @GetMapping(value = "/cancelados")
+    public String findCanceled(Model model) {
+        List<Servico> result = repository.findByStatusServico(EnumStatusServico.CANCELADO);
+        model.addAttribute("servicos", result);
+        return "home";
+    }  
+
     @GetMapping("/novo")
     public String novoServico(ServicoDTO servicoDTO, Model model) {
     	setMotos(model);
