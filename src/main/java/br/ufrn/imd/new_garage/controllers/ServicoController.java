@@ -1,5 +1,6 @@
 package br.ufrn.imd.new_garage.controllers;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -99,6 +100,8 @@ public class ServicoController {
         Servico servico = repository.findById(id).orElse(null);
         if(servico != null) {
     		servico.setStatusServico(EnumStatusServico.PENDENTE);
+    		servico.setData_fim(null);
+    		
         	repository.save(servico);
         }
         return "redirect:/servico/";
@@ -109,6 +112,8 @@ public class ServicoController {
         Servico servico = repository.findById(id).orElse(null);
         if(servico != null) {
     		servico.setStatusServico(EnumStatusServico.EM_ANDAMENTO);
+    		servico.setData_fim(null);
+    		
         	repository.save(servico);
         }
         return "redirect:/servico/";
@@ -116,19 +121,26 @@ public class ServicoController {
     
     @GetMapping("/{id}/finalizado")
     public String setServicoFinalizado(@PathVariable Long id) {
+    	Calendar calendar = Calendar.getInstance();
         Servico servico = repository.findById(id).orElse(null);
+        
         if(servico != null) {
     		servico.setStatusServico(EnumStatusServico.FINALIZADO);
-        	repository.save(servico);
+    		servico.setData_fim(calendar);
+        	
+    		repository.save(servico);
         }
         return "redirect:/servico/";
     }
     
     @GetMapping("/{id}/cancelado")
     public String setServicoCancelado(@PathVariable Long id) {
+    	Calendar calendar = Calendar.getInstance();
         Servico servico = repository.findById(id).orElse(null);
         if(servico != null) {
     		servico.setStatusServico(EnumStatusServico.CANCELADO);
+    		servico.setData_fim(calendar);
+    		
         	repository.save(servico);
         }
         return "redirect:/servico/";
