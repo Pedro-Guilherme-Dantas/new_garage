@@ -94,6 +94,46 @@ public class ServicoController {
         return result;
     }
     
+    @GetMapping("/{id}/pendente")
+    public String setServicoPendente(@PathVariable Long id) {
+        Servico servico = repository.findById(id).orElse(null);
+        if(servico != null) {
+    		servico.setStatusServico(EnumStatusServico.PENDENTE);
+        	repository.save(servico);
+        }
+        return "redirect:/servico/";
+    }
+    
+    @GetMapping("/{id}/em-andamento")
+    public String setServicoEmAndamento(@PathVariable Long id) {
+        Servico servico = repository.findById(id).orElse(null);
+        if(servico != null) {
+    		servico.setStatusServico(EnumStatusServico.EM_ANDAMENTO);
+        	repository.save(servico);
+        }
+        return "redirect:/servico/";
+    }
+    
+    @GetMapping("/{id}/finalizado")
+    public String setServicoFinalizado(@PathVariable Long id) {
+        Servico servico = repository.findById(id).orElse(null);
+        if(servico != null) {
+    		servico.setStatusServico(EnumStatusServico.FINALIZADO);
+        	repository.save(servico);
+        }
+        return "redirect:/servico/";
+    }
+    
+    @GetMapping("/{id}/cancelado")
+    public String setServicoCancelado(@PathVariable Long id) {
+        Servico servico = repository.findById(id).orElse(null);
+        if(servico != null) {
+    		servico.setStatusServico(EnumStatusServico.CANCELADO);
+        	repository.save(servico);
+        }
+        return "redirect:/servico/";
+    }
+    
     private void setMotos(Model model) {
     	List<Moto> motos = motoRepository.findAll();
     	model.addAttribute("motos", motos);
