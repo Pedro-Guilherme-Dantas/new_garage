@@ -1,11 +1,4 @@
 <div th:fragment="lista-servicos (servicos)" class="card mt-3 mb-5" th:each="servico : ${servicos}">
-	<div>
-		<a th:unless="${servico.ehFinalizado()}" class="btn btn-sm botao-servico-finalizado" th:href="${'/servico/' + servico.id + '/finalizado'}" role="button"></a>
-		<a th:unless="${servico.ehEmAndamento()}" class="btn btn-sm botao-servico-em_andamento" th:href="${'/servico/' + servico.id + '/em-andamento'}" role="button"></a>
-		<a th:unless="${servico.ehPendente()}" class="btn btn-sm botao-servico-pendente" th:href="${'/servico/' + servico.id + '/pendente'}" role="button"></a>
-		<a th:unless="${servico.ehCancelado()}" class="btn btn-sm botao-servico-cancelado" th:href="${'/servico/' + servico.id + '/cancelado'}" role="button"></a>
-	</div>
-	
 	<div class="card-header text-center bg-gradient header-servico-pendente" th:if="${servico.ehPendente}">
     	<h3 th:text="${servico.getTipoServicoNome + ' - ' + servico.getStatusServicoNome}"></h3>
 	</div>
@@ -20,6 +13,13 @@
 	  
 	<div class="card-header text-center bg-gradient header-servico-cancelado" th:if="${servico.ehCancelado}">
 		<h3 th:text="${servico.getTipoServicoNome + ' - ' + servico.getStatusServicoNome}"></h3>
+	</div>
+	
+	<div>
+		<a th:unless="${servico.ehFinalizado()}" class="btn btn-sm botao-servico-finalizado" th:href="${'/servico/' + servico.id + '/finalizado'}" role="button"></a>
+		<a th:unless="${servico.ehEmAndamento()}" class="btn btn-sm botao-servico-em_andamento" th:href="${'/servico/' + servico.id + '/em-andamento'}" role="button"></a>
+		<a th:unless="${servico.ehPendente()}" class="btn btn-sm botao-servico-pendente" th:href="${'/servico/' + servico.id + '/pendente'}" role="button"></a>
+		<a th:unless="${servico.ehCancelado()}" class="btn btn-sm botao-servico-cancelado" th:href="${'/servico/' + servico.id + '/cancelado'}" role="button"></a>
 	</div>
 	  
 	<div class="card-body row">
