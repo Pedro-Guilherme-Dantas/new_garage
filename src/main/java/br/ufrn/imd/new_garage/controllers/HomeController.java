@@ -1,5 +1,6 @@
 package br.ufrn.imd.new_garage.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,11 @@ public class HomeController {
 	
 	@GetMapping
 	public String homePage(Model model) {
-		List<Servico> servicos = repository.findByStatusServico(EnumStatusServico.PENDENTE);
-		servicos.addAll(repository.findByStatusServico(EnumStatusServico.EM_ANDAMENTO));
+		List<EnumStatusServico> statusServicos = new ArrayList<EnumStatusServico>();
+		statusServicos.add(EnumStatusServico.EM_ANDAMENTO);
+		statusServicos.add(EnumStatusServico.PENDENTE);
+
+		List<Servico> servicos = repository.findByStatusServicoIn(statusServicos);
 		
 		model.addAttribute("servicos", servicos);
 		return "home";
