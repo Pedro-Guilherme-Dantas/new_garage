@@ -3,6 +3,9 @@ package br.ufrn.imd.new_garage.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.apache.tomcat.util.digester.SystemPropertySource;
+
 import javax.validation.constraints.Min;
 
 import java.util.Calendar;
@@ -14,8 +17,8 @@ import br.ufrn.imd.new_garage.entities.Moto;
 import br.ufrn.imd.new_garage.entities.Servico;
 
 public class ServicoDTO {
-	@Min(value=0)
-	private double valor;
+
+	private String valor;
     
 	@NotBlank
 	@Size(min=6, max=255)
@@ -27,13 +30,21 @@ public class ServicoDTO {
     @NotNull
     private long motoId;
     private Moto moto = new Moto();
-    
-	public double getValor() {
+
+	public String getValor() {
 		return valor;
 	}
-	public void setValor(double valor) {
+
+	public void setValor(String valor) {
 		this.valor = valor;
 	}
+
+	public double getValorToDouble() {
+		String nValor = valor.replace(".", "");
+		this.valor = nValor.replace(",", ".");
+		return Double.parseDouble(this.valor);
+	}
+
 	public String getDescricao() {
 		return descricao;
 	}
@@ -66,7 +77,7 @@ public class ServicoDTO {
 		moto.setId(motoId);
 		
 		Servico servico = new Servico();
-		servico.setValor(valor);
+		servico.setValor(this.getValorToDouble());
 		servico.setData_inicio(Calendar.getInstance());
 		servico.setDescricao(descricao);
 		servico.setTipoServico(tipoServico);

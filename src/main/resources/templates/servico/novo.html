@@ -54,6 +54,25 @@
 					</form>
 				</div>
 			</div>
+
+			<script>
+				var element = document.getElementById('valor');
+				var numberMask = IMask(element, {
+					mask: Number,
+
+					scale: 2,
+					signed: false,
+					thousandsSeparator: '.',
+					padFractionalZeros: false,
+					normalizeZeros: true,
+					radix: ',',
+					mapToRadix: ['.'],
+
+					// additional number interval options (e.g.)
+					min: 0
+				});
+			</script>
+			
 	
 			<!-- HOME CONTENT - END -->
 		</div>
