@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<div th:replace="base :: head"></div>
+	
+	<body class="d-flex flex-column justify-content-between">
+		<div>
+			<div th:replace="base :: logo"></div>
+			<!-- HOME CONTENT - BEGIN -->
+			<div th:replace="base :: botao-adicionar-element(${'Adicionar cliente'}, ${'#'})"></div>
+
+            <div class="container">
+				<div th:replace="cliente/lista :: main (${clientes})"></div>
+			</div>
+	
+			<!-- HOME CONTENT - END -->
+		</div>
+		<div th:replace="base :: footer"></div>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<div th:fragment="main (clientes)" th:each="cliente : ${clientes}">
+	<div th:replace=":: cliente-card (${cliente})"></div>
+</div>
+
+<div th:fragment="cliente-card (cliente)" class="card mt-3 mb-5">
+	<!-- header -->
+	<div class="card-header text-center bg-gradient header-cliente">
+		<h3 th:text="${cliente.getNome}"></h3>
+	</div>
+
+	<!-- content -->
+	<div class="card-body">
+		<form>
+			<div class="form-group card-section">
+				<h4 class="card-title"><i class="fa fa-user" aria-hidden="true"></i> Dados Pessoais</h4>
+				<div class="form-row mb-3">
+					<div class="col-md-6">
+						<label>Nome</label>
+						<input th:value="${cliente.nome}" disabled class="form-control" placeholder="Não preenchido"/>
+					</div>
+					<div class="col-md-6">
+						<label>CPF</label>
+						<input th:value="${cliente.cpf}" disabled class="form-control" placeholder="Não preenchido"/>
+					</div>
+				</div>
+			</div>
+			<div class="form-group card-section">
+				<h4 class="card-title"><i class="fa fa-phone" aria-hidden="true"></i> Contato</h4>
+				<div class="form-row mb-3">
+					<div class="col-md-6">
+						<label>Email</label>
+						<input th:value="${cliente.email}" disabled class="form-control" placeholder="Não preenchido"/>
+					</div>
+					<div class="col-md-6">
+						<label>Telefone</label>
+						<input th:value="${cliente.telefone}" disabled class="form-control" placeholder="Não preenchido"/>
+					</div>
+				</div>
+			</div>
+			<div class="form-group card-section">
+				<h4 class="card-title"><i class="fa fa-map-marker" aria-hidden="true"></i> Endereço</h4>
+				<div class="form-row mb-3">
+					<div class="col-md-6">
+						<label>Bairro</label>
+						<input disabled th:value="${cliente.bairro}" class="form-control" placeholder="Não preenchido"/>
+					</div>
+					<div class="col-md-4">
+						<label>Cidade</label>
+						<input disabled th:value="${cliente.cidade}" class="form-control" placeholder="Não preenchido"/>
+					</div>
+					<div class="col-md-2">
+						<label>Estado</label>
+						<input disabled th:value="${cliente.estado}" class="form-control" placeholder="Não preenchido"/>
+					</div>
+					<div class="col-lg-10">
+						<label>Rua</label>
+						<input disabled th:value="${cliente.rua}" class="form-control" placeholder="Não preenchido"/>
+					</div>
+					<div class="col-sm-2">
+						<label>Número</label>
+						<input disabled th:value="${cliente.numero}" class="form-control" placeholder="Não preenchido"/>
+					</div>
+					<div class="col-sm-3">
+						<label>CEP</label>
+						<input disabled th:value="${cliente.cep}" class="form-control" value="59014-100" placeholder="Não preenchido"/>
+					</div>
+				</div>
+				<div>
+					<label for="exampleFormControlTextarea1">Complemento</label>
+					<textarea th:value="${cliente.complemento}" class="form-control" disabled rows="2"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<!-- footer -->
+	<div class="card-footer text-muted">
+		<a class="btn btn-primary btn-lg" href="#" role="button">Editar</a>
+	</div>
+</div>
