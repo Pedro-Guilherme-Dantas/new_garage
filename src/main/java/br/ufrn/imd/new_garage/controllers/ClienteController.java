@@ -35,6 +35,16 @@ public class ClienteController {
         return "cliente/novo";
     }
 
+    @PostMapping("/novo")
+    public String create(ClienteDTO clienteDTO){
+        Cliente cliente = clienteDTO.toCliente();
+        // salvando novo cliente
+        clienteRepository.save(cliente);
+
+
+        return "redirect:/cliente";
+    }
+
     @GetMapping("/list")
     public List<Cliente> findAll() {
         List<Cliente> clientes = clienteRepository.findAll();

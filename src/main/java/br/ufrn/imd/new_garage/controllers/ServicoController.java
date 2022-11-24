@@ -67,14 +67,14 @@ public class ServicoController {
     }  
 
     @GetMapping("/novo")
-    public String novoServico(ServicoDTO servicoDTO, Model model) {
+    public String novo(ServicoDTO servicoDTO, Model model) {
     	setMotos(model);
     	
     	return "servico/novo";
     }
     
     @PostMapping("/novo")
-    public String insert(@Valid ServicoDTO servicoDTO, BindingResult result, Model model) {
+    public String create(@Valid ServicoDTO servicoDTO, BindingResult result, Model model) {
     	// Validando preenchimento do formulário
         if(result.hasErrors()) {
         	setMotos(model);
@@ -83,7 +83,6 @@ public class ServicoController {
 		}
 		// salvando novo servico
 		Servico servico = servicoDTO.toServico();
-		System.out.println(servico);
 		repository.save(servico);
 
 		return "redirect:/servico/novo";
