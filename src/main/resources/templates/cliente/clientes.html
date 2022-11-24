@@ -6,7 +6,7 @@
 		<div>
 			<div th:replace="base :: logo"></div>
 			<!-- HOME CONTENT - BEGIN -->
-			<div th:replace="base :: botao-adicionar-element(${'Adicionar cliente'}, ${'#'})"></div>
+			<div th:replace="base :: botao-adicionar-element (${'/cliente/novo'})"></div>
 
             <div class="container">
 				<div th:replace="cliente/lista :: main (${clientes})"></div>

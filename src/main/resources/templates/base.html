@@ -140,7 +140,7 @@
 	      <li class="nav-item">
 	        <a class="nav-link" href="#">Motos</a>
 	      </li>
-	      <li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}">
+	      <li class="nav-item" th:classappend="${#httpServletRequest.getRequestURI() == '/cliente' ? 'active':''}">
 	        <a class="nav-link" href="/cliente">Clientes</a>
 	      </li>
 	    </ul>
@@ -152,9 +152,9 @@
 	<h1 class="display-4" th:text="${valor}"></h1>
 </div>
 
-<div th:fragment="botao-adicionar-element(texto, link)" id="botao-add-elemento" class="d-flex align-items-end flex-column">
+<div th:fragment="botao-adicionar-element(link)" id="botao-add-elemento" class="d-flex align-items-end flex-column">
 	<a class="btn btn-success btn-lg" role="button" th:href="${link}">
-		<i class="fa fa-plus" th:text="${' ' + texto}"></i>
+		<i class="fa fa-plus">Novo</i>
 	</a>
 </div>
 
