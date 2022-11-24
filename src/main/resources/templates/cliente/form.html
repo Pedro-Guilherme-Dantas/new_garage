@@ -4,11 +4,17 @@
         <div class="form-row mb-3">
             <div class="col-md-6">
                 <label>Nome</label>
-                <input th:field="*{nome}" class="form-control" placeholder="Não preenchido"/>
+                <input th:field="*{nome}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{nome}">
+                    nome inválido
+                </div>
             </div>
             <div class="col-md-6">
                 <label>CPF</label>
-                <input th:field="*{cpf}" class="form-control" placeholder="Não preenchido"/>
+                <input th:field="*{cpf}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{cpf}">
+                    cpf inválido
+                </div>
             </div>
         </div>
     </div>
@@ -17,11 +23,17 @@
         <div class="form-row mb-3">
             <div class="col-md-6">
                 <label>Email</label>
-                <input th:field="*{email}" class="form-control" placeholder="Não preenchido"/>
+                <input th:field="*{email}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{email}">
+                    email inválido
+                </div>
             </div>
             <div class="col-md-6">
                 <label>Telefone</label>
-                <input th:field="*{telefone}" class="form-control" placeholder="Não preenchido"/>
+                <input th:field="*{telefone}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{telefone}">
+                    telefone inválido
+                </div>
             </div>
         </div>
     </div>
@@ -30,32 +42,53 @@
         <div class="form-row mb-3">
             <div class="col-md-6">
                 <label>Bairro</label>
-                <input th:field="*{bairro}" class="form-control" placeholder="Não preenchido"/>
+                <input th:field="*{bairro}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{bairro}">
+                    bairro inválido
+                </div>
             </div>
             <div class="col-md-4">
                 <label>Cidade</label>
-                <input th:field="*{cidade}" class="form-control" placeholder="Não preenchido"/>
+                <input th:field="*{cidade}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{cidade}">
+                    cidade inválido
+                </div>
             </div>
             <div class="col-md-2">
                 <label>Estado</label>
-                <input th:field="*{estado}" class="form-control" placeholder="Não preenchido"/>
+                <input th:field="*{estado}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{estado}">
+                    estado inválido
+                </div>
             </div>
             <div class="col-lg-10">
                 <label>Rua</label>
-                <input th:field="*{rua}" class="form-control" placeholder="Não preenchido"/>
+                <input th:field="*{rua}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{rua}">
+                    rua inválido
+                </div>
             </div>
             <div class="col-sm-2">
                 <label>Número</label>
-                <input th:field="*{numero}" class="form-control" placeholder="Não preenchido"/>
+                <input th:field="*{numero}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{numero}">
+                    número inválido
+                </div>
             </div>
             <div class="col-sm-3">
                 <label>CEP</label>
-                <input th:field="*{cep}" class="form-control" value="59014-100" placeholder="Não preenchido"/>
+                <input th:field="*{cep}" th:errorClass="is-invalid" class="form-control" value="59014-100" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{cep}">
+                    CEP inválido
+                </div>
             </div>
         </div>
         <div>
             <label for="exampleFormControlTextarea1">Complemento</label>
-            <textarea th:field="*{complemento}" class="form-control" rows="2"></textarea>
+            <textarea th:field="*{complemento}" th:errorClass="is-invalid" class="form-control" rows="2"></textarea>
+            <div class="invalid-feedback" th:errors="*{complemento}">
+                complemento inválido
+            </div>
         </div>
         <div class="form-row mt-5">
                 <button class="btn btn-lg btn-success ml-1" type="submit">Salvar</button>

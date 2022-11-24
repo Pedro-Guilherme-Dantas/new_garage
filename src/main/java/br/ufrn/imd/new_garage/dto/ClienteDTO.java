@@ -1,17 +1,25 @@
 package br.ufrn.imd.new_garage.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import br.ufrn.imd.new_garage.entities.Cliente;
 
 public class ClienteDTO {
     private Long id;
+    @NotBlank
     private String cpf;
+    @NotBlank
     private String nome;
+    @NotBlank
     private String telefone;
     private String email;
     private String estado;
+    @NotBlank
     private String bairro;
     private String cidade;
+    @NotBlank
     private String rua;
+    @NotBlank
     private String numero;
     private String cep;
     private String complemento;

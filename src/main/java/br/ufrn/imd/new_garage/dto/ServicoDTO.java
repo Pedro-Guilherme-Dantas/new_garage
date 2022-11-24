@@ -4,13 +4,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.apache.tomcat.util.digester.SystemPropertySource;
-
-import javax.validation.constraints.Min;
-
 import java.util.Calendar;
 
-import br.ufrn.imd.new_garage.entities.Cliente;
 import br.ufrn.imd.new_garage.entities.EnumStatusServico;
 import br.ufrn.imd.new_garage.entities.EnumTipoServico;
 import br.ufrn.imd.new_garage.entities.Moto;

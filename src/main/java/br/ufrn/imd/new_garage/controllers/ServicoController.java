@@ -64,7 +64,7 @@ public class ServicoController {
         List<Servico> result = repository.findByStatusServico(EnumStatusServico.CANCELADO);
         model.addAttribute("servicos", result);
         return "home";
-    }  
+    }
 
     @GetMapping("/novo")
     public String novo(ServicoDTO servicoDTO, Model model) {
