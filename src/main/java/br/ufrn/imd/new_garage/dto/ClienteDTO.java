@@ -1,27 +1,42 @@
 package br.ufrn.imd.new_garage.dto;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 import br.ufrn.imd.new_garage.entities.Cliente;
 
 public class ClienteDTO {
     private Long id;
+
     @NotBlank
+    @Pattern(regexp = "(^\\d{3}\\.\\d{3}.\\d{3}-\\d{2}$)|(^$)")
     private String cpf;
+    
     @NotBlank
     private String nome;
     @NotBlank
+    
+    @Pattern(regexp = "(^\\(\\w{2}\\)\\w{4,5}-\\w{4}$)|(^$)")
     private String telefone;
+    
+    @Pattern(regexp = "(^[a-z0-9_\\.-]+@[a-z0-9-]+\\.[a-z]{1,4}$)|(\\s*)")
     private String email;
+    
     private String estado;
+    
     @NotBlank
     private String bairro;
+    
     private String cidade;
+    
     @NotBlank
     private String rua;
+    
     @NotBlank
     private String numero;
+    @Pattern(regexp = "(^\\d{2}\\.\\d{3}-\\d{3}$)|(^$)")
     private String cep;
+    
     private String complemento;
 
     public Long getId() {
@@ -46,7 +61,7 @@ public class ClienteDTO {
         return telefone;
     }
     public void setTelefone(String telefone) {
-        this.telefone = telefone;
+        this.telefone = telefone.strip().replace(" ", "");
     }
     public String getEmail() {
         return email;
