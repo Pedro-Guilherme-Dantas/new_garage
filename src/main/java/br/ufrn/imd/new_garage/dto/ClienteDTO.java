@@ -9,17 +9,20 @@ public class ClienteDTO {
     private Long id;
 
     @NotBlank
-    @Pattern(regexp = "(^\\d{3}\\.\\d{3}.\\d{3}-\\d{2}$)|(^$)")
+    @Pattern(regexp = "(^\\d{3}\\.\\d{3}.\\d{3}-\\d{2}$)|(^$)",
+            message = "CPF inválido, exemplo de CPF: 555.555.555-55")
     private String cpf;
     
     @NotBlank
     private String nome;
     @NotBlank
     
-    @Pattern(regexp = "(^\\(\\w{2}\\)\\w{4,5}-\\w{4}$)|(^$)")
+    @Pattern(regexp = "(^\\(\\w{2}\\)\\w{4,5}-\\w{4}$)|(^$)",
+            message = "telefone inválido, exemploe de telefone: (55)55555-5555")
     private String telefone;
     
-    @Pattern(regexp = "(^[a-z0-9_\\.-]+@[a-z0-9-]+\\.[a-z]{1,4}$)|(\\s*)")
+    @Pattern(regexp = "(^[a-z0-9_\\.-]+@[a-z0-9-]+\\.[a-z]{1,4}$)|(\\s*)",
+            message = "email inválido, exemplo de email: nome@mail.com")
     private String email;
     
     private String estado;
@@ -34,7 +37,8 @@ public class ClienteDTO {
     
     @NotBlank
     private String numero;
-    @Pattern(regexp = "(^\\d{2}\\.\\d{3}-\\d{3}$)|(^$)")
+    @Pattern(regexp = "(^\\d{2}\\.\\d{3}-\\d{3}$)|(^$)",
+            message = "CEP inválido, exemplo de CEP: 55.555-555")
     private String cep;
     
     private String complemento;
