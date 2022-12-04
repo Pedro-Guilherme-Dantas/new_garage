@@ -2,9 +2,12 @@ package br.ufrn.imd.new_garage.entities;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name = "tb_cliente")

@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,6 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.engine.internal.CascadePoint;
 
 @Entity
 @Table(name = "tb_servicos")
@@ -44,13 +49,10 @@ public class Servico {
     
     @Enumerated(EnumType.STRING)
     private EnumTipoServico tipoServico;
-    
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "moto_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
     private Moto moto;
 
     public Long getId() {
@@ -76,14 +78,6 @@ public class Servico {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-	public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
 
     public Moto getMoto() {
         return moto;
