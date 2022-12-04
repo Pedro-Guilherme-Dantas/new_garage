@@ -10,7 +10,7 @@
 
 	<!-- content -->
 	<div class="card-body">
-		<form>
+		<div>
 			<div class="form-group card-section">
 				<h4 class="card-title"><i class="fa fa-user" aria-hidden="true"></i> Dados Pessoais</h4>
 				<div class="form-row mb-3">
@@ -70,7 +70,13 @@
 					<textarea th:value="${cliente.complemento}" class="form-control" disabled rows="2"></textarea>
 				</div>
 			</div>
-			<button class="btn btn-primary btn-lg">Editar</button>
-		</form>
+			<div>
+				<a class="btn btn-primary btn-lg" th:href="${'cliente/' + cliente.id + '/edit'}" role="button">Editar</a>
+				<form class="d-inline" th:action="${'cliente/' + cliente.id}" th:method="delete">
+					<input type="hidden" name="_method" value="delete">
+					<button class="btn btn-danger btn-lg" type="submit">Deletar</button>	
+				</form>
+			</div>
+		</div>
 	</div>
 </div>

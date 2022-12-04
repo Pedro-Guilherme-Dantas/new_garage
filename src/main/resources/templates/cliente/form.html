@@ -1,4 +1,146 @@
-<form th:fragment="main (clienteDTO)" th:object="${clienteDTO}" action="/cliente/novo" method="POST">
+<form th:fragment="add (clienteDTO)" th:object="${clienteDTO}" action="/cliente/novo" method="POST">
+    
+    <div th:replace="cliente/form :: form-fields (${clienteDTO})">
+    </div>
+    
+    <div class="form-row mt-5">
+        <button class="btn btn-lg btn-success ml-1" type="submit">Salvar</button>
+        <a class="btn btn-lg btn-danger" href="/cliente" role="button">Cancelar</a>
+    </div>
+    <script>
+        function applyNumMask(element) {
+            var maskCpf = {
+                mask: '000.000.000-00'
+            }
+
+            var numberMask = IMask(element, {
+                mask: Number,
+
+                scale: 2,
+                signed: false,
+                thousandsSeparator: '.',
+                padFractionalZeros: false,
+                normalizeZeros: true,
+                radix: ',',
+                mapToRadix: ['.'],
+
+                // additional number interval options (e.g.)
+                min: 0
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var maskCpf = {
+                mask: '000.000.000-00'
+            }
+            var maskTelefone = {
+                mask: '(00) 9 0000-0000'
+            }
+            var maskEmail = {
+                mask:function (value) {
+                    if(/^[a-z0-9_\.-]+$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}$/.test(value))
+                        return true;
+                    return false;
+                }
+            }
+            var maskCep = {
+                mask: '00\.000-000'
+            }
+            
+
+            var elCpf = document.querySelector('#cpf');
+            var elTelefone = document.querySelector('#telefone');
+            var elEmail = document.querySelector('#email');
+            var elCep = document.querySelector('#cep');
+            
+            IMask(elCpf, maskCpf);
+            IMask(elTelefone, maskTelefone);
+            IMask(elEmail, maskEmail);
+            IMask(elCep, maskCep);
+        });
+    </script>
+</form>
+
+<form th:fragment="edit (clienteDTO)" th:object="${clienteDTO}" th:action="${'/cliente/' + clienteDTO.id+ '/edit'}" th:method="put">
+    <input type="hidden" name="_method" value="put">
+    <div th:replace="cliente/form :: form-fields (${clienteDTO})">
+    </div>
+    
+    <div class="form-row mt-5">
+        <button class="btn btn-lg btn-success ml-1" type="submit">Salvar</button>
+        <a class="btn btn-lg btn-danger" href="/cliente" role="button">Cancelar</a>
+    </div>
+    <script>
+        function applyNumMask(element) {
+            var maskCpf = {
+                mask: '000.000.000-00'
+            }
+
+            var numberMask = IMask(element, {
+                mask: Number,
+
+                scale: 2,
+                signed: false,
+                thousandsSeparator: '.',
+                padFractionalZeros: false,
+                normalizeZeros: true,
+                radix: ',',
+                mapToRadix: ['.'],
+
+                // additional number interval options (e.g.)
+                min: 0
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var maskCpf = {
+                mask: '000.000.000-00'
+            }
+            var maskTelefone = {
+                mask: '(00) 9 0000-0000'
+            }
+            var maskEmail = {
+                mask:function (value) {
+                    if(/^[a-z0-9_\.-]+$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.$/.test(value))
+                        return true;
+                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}$/.test(value))
+                        return true;
+                    return false;
+                }
+            }
+            var maskCep = {
+                mask: '00\.000-000'
+            }
+            
+
+            var elCpf = document.querySelector('#cpf');
+            var elTelefone = document.querySelector('#telefone');
+            var elEmail = document.querySelector('#email');
+            var elCep = document.querySelector('#cep');
+            
+            IMask(elCpf, maskCpf);
+            IMask(elTelefone, maskTelefone);
+            IMask(elEmail, maskEmail);
+            IMask(elCep, maskCep);
+        });
+    </script>
+</form>
+
+<div th:fragment="form-fields (clienteDTO)">
     <div class="form-group card-section">
         <h4 class="card-title"><i class="fa fa-user" aria-hidden="true"></i> Dados Pessoais</h4>
         <div class="form-row mb-3">
@@ -90,69 +232,5 @@
                 complemento inválido
             </div>
         </div>
-        <div class="form-row mt-5">
-                <button class="btn btn-lg btn-success ml-1" type="submit">Salvar</button>
-                <a class="btn btn-lg btn-danger" href="/cliente" role="button">Cancelar</a>
-        </div>
     </div>
-    <script>
-        function applyNumMask(element) {
-            var maskCpf = {
-                mask: '000.000.000-00'
-            }
-
-            var numberMask = IMask(element, {
-                mask: Number,
-
-                scale: 2,
-                signed: false,
-                thousandsSeparator: '.',
-                padFractionalZeros: false,
-                normalizeZeros: true,
-                radix: ',',
-                mapToRadix: ['.'],
-
-                // additional number interval options (e.g.)
-                min: 0
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", function(event) {
-            var maskCpf = {
-                mask: '000.000.000-00'
-            }
-            var maskTelefone = {
-                mask: '(00) 9 0000-0000'
-            }
-            var maskEmail = {
-                mask:function (value) {
-                    if(/^[a-z0-9_\.-]+$/.test(value))
-                        return true;
-                    if(/^[a-z0-9_\.-]+@$/.test(value))
-                        return true;
-                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+$/.test(value))
-                        return true;
-                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.$/.test(value))
-                        return true;
-                    if(/^[a-z0-9_\.-]+@[a-z0-9-]+\.[a-z]{1,4}$/.test(value))
-                        return true;
-                    return false;
-                }
-            }
-            var maskCep = {
-                mask: '00\.000-000'
-            }
-            
-
-            var elCpf = document.querySelector('#cpf');
-            var elTelefone = document.querySelector('#telefone');
-            var elEmail = document.querySelector('#email');
-            var elCep = document.querySelector('#cep');
-            
-            IMask(elCpf, maskCpf);
-            IMask(elTelefone, maskTelefone);
-            IMask(elEmail, maskEmail);
-            IMask(elCep, maskCep);
-        });
-    </script>
-</form>
+</div>
