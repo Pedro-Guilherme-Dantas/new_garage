@@ -1,0 +1,39 @@
+<div th:fragment="card-cliente (cliente)" class="card mt-3 mb-5">
+	<!-- header -->
+	<div class="card-header text-center bg-gradient header-cliente">
+		<h3 th:text="${cliente.getNome}"></h3>
+	</div>
+
+	<!-- content -->
+	<div class="card-body">
+		<div>
+			<div class="form-group card-section">
+				<h4 class="card-title"><i class="fa fa-user" aria-hidden="true"></i> Dados Pessoais</h4>
+				<div class="form-row mb-3">
+					<div class="col-md-6">
+						<label>Nome</label>
+						<input th:value="${cliente.nome}" disabled class="form-control" placeholder="Não preenchido"/>
+					</div>
+					<div class="col-md-6">
+						<label>CPF</label>
+						<input th:value="${cliente.cpf}" disabled class="form-control" placeholder="Não preenchido"/>
+					</div>
+				</div>
+			</div>
+			<div class="form-group card-section">
+				<h4 class="card-title"><i class="fa fa-phone" aria-hidden="true"></i> Contato</h4>
+				<div class="form-row mb-3">
+					<div class="col-md-6">
+						<label>Email</label>
+						<input th:value="${cliente.email}" disabled class="form-control" placeholder="Não preenchido"/>
+					</div>
+					<div class="col-md-6">
+						<label>Telefone</label>
+						<input th:value="${cliente.telefone}" disabled class="form-control" placeholder="Não preenchido"/>
+					</div>
+				</div>
+			</div>
+			<a type="button" th:href="'cliente/' + ${cliente.id} + '/moto'" class="btn btn-primary">Selecionar</a>
+		</div>
+	</div>
+</div>

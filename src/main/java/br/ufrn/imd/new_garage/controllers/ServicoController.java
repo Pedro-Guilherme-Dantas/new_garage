@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.ufrn.imd.new_garage.dto.ServicoDTO;
+import br.ufrn.imd.new_garage.entities.Cliente;
 import br.ufrn.imd.new_garage.entities.EnumStatusServico;
 import br.ufrn.imd.new_garage.entities.Moto;
 import br.ufrn.imd.new_garage.entities.Servico;
+import br.ufrn.imd.new_garage.repositories.ClienteRepository;
 import br.ufrn.imd.new_garage.repositories.MotoRepository;
 import br.ufrn.imd.new_garage.repositories.ServicoRepository;
 
@@ -30,6 +32,9 @@ public class ServicoController {
     
     @Autowired
     public MotoRepository motoRepository;
+
+    @Autowired
+    public ClienteRepository clienteRepository;
 
     @GetMapping
     public String findAll(Model model) {
@@ -67,12 +72,31 @@ public class ServicoController {
     }
 
     @GetMapping("/novo")
+    public String novoCliente(Model model) {
+    	List<Cliente> clientes = clienteRepository.findAll();
+        model.addAttribute("clientes", clientes);
+    	
+    	return "servico/adicionar/cliente";
+    }
+
+    @GetMapping("/cliente/{clienteId}/moto")
+    public String novoMoto(@PathVariable Long clienteId, Model model) {
+    	List<Moto> motos = motoRepository.findAllByClienteId(clienteId);
+
+        model.addAttribute("motos", motos);
+    	
+    	return "servico/adicionar/moto";
+    }
+
+    
+    /**
+    @GetMapping("/novo")
     public String novo(ServicoDTO servicoDTO, Model model) {
     	setMotos(model);
     	
     	return "servico/novo";
     }
-    
+    */
     @PostMapping("/novo")
     public String create(@Valid ServicoDTO servicoDTO, BindingResult result, Model model) {
     	// Validando preenchimento do formulário
