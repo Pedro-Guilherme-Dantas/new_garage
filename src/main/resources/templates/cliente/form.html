@@ -69,7 +69,7 @@
     </script>
 </form>
 
-<form th:fragment="edit (clienteDTO)" th:object="${clienteDTO}" th:action="${'/cliente/' + clienteDTO.id+ '/edit'}" th:method="put">
+<form th:fragment="edit (clienteDTO)" th:object="${clienteDTO}" th:action="${'/cliente/' + clienteDTO.id + '/edit'}" th:method="put">
     <input type="hidden" name="_method" value="put">
     <div th:replace="cliente/form :: form-fields (${clienteDTO})">
     </div>
