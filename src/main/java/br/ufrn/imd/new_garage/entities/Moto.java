@@ -19,6 +19,7 @@ public class Moto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String placa;
+    private String marca;
     private String modelo;
     private int ano;
     private int quilometragem;
@@ -42,6 +43,12 @@ public class Moto {
     public void setPlaca(String placa) {
         this.placa = placa;
     }
+    public String getMarca() {
+		return marca;
+	}
+    public void setMarca(String marca) {
+		this.marca = marca;
+	}
     public String getModelo() {
 		return modelo;
 	}
@@ -77,5 +84,11 @@ public class Moto {
     }
     public void setProprietario(Cliente proprietario) {
         this.cliente = proprietario;
+    }
+    public void setProprietarioById(long id) {
+        if(cliente == null)
+            this.cliente = new Cliente();
+        
+        this.cliente.setId(id);
     }
 }

@@ -10,11 +10,11 @@
                     <div class="form-row mb-3">
                         <div class="col-md-6">
                             <label>Marca</label>
-                            <input th:value="${moto.modelo}" disabled class="form-control" placeholder="Não preenchido"/>
+                            <input th:value="${moto.marca}" disabled class="form-control" placeholder="Não preenchido"/>
                         </div>
                         <div class="col-md-6">
                             <label>Modelo</label>
-                            <input th:value="${'Kasinski'}" disabled class="form-control" placeholder="Não preenchido"/>
+                            <input th:value="${moto.modelo}" disabled class="form-control" placeholder="Não preenchido"/>
                         </div>
                         <div class="col-md-3">
                             <label>Placa</label>
@@ -27,6 +27,6 @@
                 <img class="card-img" th:src="${moto.urlImg}">
             </div>
         </div>
-        <a type="button" th:href="'moto/' + ${moto.id} + '/novo'" class="btn btn-primary">Selecionar</a>
+        <a type="button" th:href="'/servico/moto/' + ${moto.id} + '/novo'" class="btn btn-primary">Selecionar</a>
     </div>
 </div>

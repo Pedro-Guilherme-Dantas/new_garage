@@ -87,6 +87,30 @@ public class ServicoController {
     	
     	return "servico/adicionar/moto";
     }
+    
+    @GetMapping("/moto/{motoId}/novo")
+    public String novo(@PathVariable Long motoId, ServicoDTO servicoDTO) {
+        servicoDTO.setMotoId(motoId);
+
+    	return "servico/novo";
+    }
+
+    @PostMapping("/moto/{motoId}/novo")
+    public String create(@Valid ServicoDTO servicoDTO, BindingResult result, Model model) {
+    	// Validando preenchimento do formulário
+        if(result.hasErrors()) {
+        	setMotos(model);
+        	
+			return "servico/novo";
+		}
+        // adicionando id da moto
+		Servico servico = servicoDTO.toServico();
+		repository.save(servico);
+
+        System.out.println("valor: " + servicoDTO.getValor());
+
+		return "redirect:/servico";
+    }
 
     
     /**
@@ -97,20 +121,6 @@ public class ServicoController {
     	return "servico/novo";
     }
     */
-    @PostMapping("/novo")
-    public String create(@Valid ServicoDTO servicoDTO, BindingResult result, Model model) {
-    	// Validando preenchimento do formulário
-        if(result.hasErrors()) {
-        	setMotos(model);
-        	
-			return "servico/novo";
-		}
-		// salvando novo servico
-		Servico servico = servicoDTO.toServico();
-		repository.save(servico);
-
-		return "redirect:/servico/novo";
-    }
     
     @GetMapping(value = "/{id}")
     public Servico findById(@PathVariable Long id) {

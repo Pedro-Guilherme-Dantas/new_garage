@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<div th:replace="base :: head"></div>
+	
+	<body class="d-flex flex-column justify-content-between">
+        <div th:replace="base :: logo"></div>
+        <!-- HOME CONTENT - BEGIN -->
+        <div>
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        <div th:replace="moto/form :: add (${motoDTO})"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- HOME CONTENT - END -->
+		<div th:replace="base :: footer"></div>
+	</body>
+</html>

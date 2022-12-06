@@ -5,22 +5,25 @@
 	<body class="d-flex flex-column justify-content-between">
 		<div th:replace="base :: logo"></div>
 		<!-- HOME CONTENT - BEGIN -->
-		<div class="container d-flex justify-content-center">
-			<div id="carouselClientes" class="carousel slide col-8" data-ride="carousel">
-				<div class="carousel-inner">
-					<div th:each="cliente,iter : ${clientes}" class="carousel-item" th:classappend="${iter.index == 0 ? 'active':''}">
-						<div th:replace="servico/adicionar/cliente-components :: card-cliente (${cliente})"></div>
+		<div>
+			<div th:replace="base :: botao-adicionar-element(${'/cliente/novo'})"></div>
+			<div class="container d-flex justify-content-center">
+				<div id="carouselClientes" class="carousel slide col-8" data-ride="carousel">
+					<div class="carousel-inner">
+						<div th:each="cliente,iter : ${clientes}" class="carousel-item" th:classappend="${iter.index == 0 ? 'active':''}">
+							<div th:replace="servico/adicionar/cliente-components :: card-cliente (${cliente})"></div>
+						</div>
 					</div>
-				</div>
 
-				<a class="carousel-control-prev" href="#carouselClientes" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="carousel-control-next" href="#carouselClientes" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
+					<a class="carousel-control-prev" href="#carouselClientes" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control-next" href="#carouselClientes" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
 			</div>
 		</div>
 		<!-- HOME CONTENT - END -->

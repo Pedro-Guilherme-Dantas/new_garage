@@ -1,0 +1,111 @@
+<form th:fragment="add (motoDTO)" th:object="${motoDTO}" th:action="${'/moto/' + motoDTO.clienteId + '/novo'}" method="POST">
+    
+    <div th:replace="moto/form :: form-fields (${motoDTO})">
+    </div>
+    
+    <div class="form-row mt-5">
+        <button class="btn btn-lg btn-success ml-1" type="submit">Salvar</button>
+        <a class="btn btn-lg btn-danger" href="/moto" role="button">Cancelar</a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var maskAno = {
+                mask: '0000'
+            }
+            var maskPlaca = {
+                mask: 'aaa-0000'
+            }
+            var maskKM = {
+                mask: 'num km',
+                lazy: false,
+                blocks: {
+                    num: {
+                        mask: Number,
+                        min: 0,
+                        scale: 0,
+                        thousandsSeparator: '.'
+                    }
+                }
+            }
+            var maskCC = {
+                mask: 'num cc',
+                lazy: false,
+                blocks: {
+                    num: {
+                        mask: Number,
+                        min: 0,
+                        scale: 0,
+                        thousandsSeparator: '.'
+                    }
+                }
+            }
+            
+            var elAno = document.querySelector('#ano');
+            var elPlaca = document.querySelector('#placa');
+            var elKM = document.querySelector('#quilometragem');
+            var elCC = document.querySelector('#cilindrada');
+            
+            IMask(elAno, maskAno);
+            IMask(elPlaca, maskPlaca);
+            IMask(elKM, maskKM);
+            IMask(elCC, maskCC);
+        });
+    </script>
+</form>
+
+<div th:fragment="form-fields (motoDTO)">
+    <div class="form-group card-section">
+        <h4 class="card-title mr-2"><i class="fa fa-motorcycle" aria-hidden="true"></i> Motocicleta</h4>
+        <div class="form-row mb-3">
+            <div class="col-md-6">
+                <label>Marca</label>
+                <input th:field="*{marca}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{marca}">
+                    marca inválido
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>Modelo</label>
+                <input th:field="*{modelo}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{modelo}">
+                    modelo inválido
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label>Ano</label>
+                <input th:field="*{ano}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{ano}">
+                    Ano inválido
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label>Placa</label>
+                <input th:field="*{placa}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{placa}">
+                    Placa inválido
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label>Quilometragem</label>
+                <input th:field="*{quilometragem}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{quilometragem}">
+                    Quilometragem inválido
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label>Cilindrada</label>
+                <input th:field="*{cilindrada}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{cilindrada}">
+                    Cilindrada inválido
+                </div>
+            </div>
+            <div class="col-md-12">
+                <label>URL de Imagem</label>
+                <input th:field="*{urlImg}" th:errorClass="is-invalid" class="form-control" placeholder="Não preenchido"/>
+                <div class="invalid-feedback" th:errors="*{urlImg}">
+                    URL de imagem inválido
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

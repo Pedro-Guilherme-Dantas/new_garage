@@ -26,7 +26,7 @@
   		<div class="col-8">
 	  		<h3 class="card-title">Moto</h3>
 	  		<div class="row">
-	  			<p class="col-4">Marca: Kasinski</p>
+	  			<p class="col-4">Marca: <span th:text="${servico.moto.marca}"></span></p>
 	  			<p class="col-4">Modelo: <span th:text="${servico.moto.modelo}"></span></p>
 	  			<p class="col-4">Ano: <span th:text="${servico.moto.ano}"></span></p>
 	  		</div>
@@ -45,7 +45,7 @@
 		      	<p class="col-6">Data fim: <span th:text="${#calendars.format(servico.data_fim, 'dd/MM/yyyy HH:mm')}"></span></p>
 		    </div>
 	  		<div class="row">
-		      	<p class="col">Valor: R$ <span th:text="${#numbers.formatDecimal(servico.valor, 0,'POINT',2,'COMMA')}">0,00</span></p>
+		      	<p class="col">Valor: R$ <span th:text="${#numbers.formatDecimal(servico.valor, 1,'POINT',2,'COMMA')}">0,00</span></p>
 		    </div>
 		    <h3 class="card-title">Cliente</h3>
 	  		<div class="row">

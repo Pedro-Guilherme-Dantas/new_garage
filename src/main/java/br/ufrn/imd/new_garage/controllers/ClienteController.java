@@ -52,9 +52,9 @@ public class ClienteController {
 			return "cliente/novo";
 		}
         // salvando novo cliente
-        clienteRepository.save(cliente);
+        cliente = clienteRepository.save(cliente);
 
-        return "redirect:/cliente";
+        return "redirect:/moto/" + cliente.getId() + "/novo";
     }
 
     @GetMapping(value = "/{id}/edit")

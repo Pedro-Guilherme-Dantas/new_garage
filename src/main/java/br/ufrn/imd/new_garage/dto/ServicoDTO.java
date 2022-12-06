@@ -13,6 +13,7 @@ import br.ufrn.imd.new_garage.entities.Servico;
 
 public class ServicoDTO {
 
+	@NotBlank
 	private String valor;
     
 	@NotBlank
@@ -31,15 +32,8 @@ public class ServicoDTO {
 	}
 
 	public void setValor(String valor) {
-		this.valor = valor;
+		this.valor = valor.replace(".", "").replace(",",".");
 	}
-
-	public double getValorToDouble() {
-		String nValor = valor.replace(".", "");
-		this.valor = nValor.replace(",", ".");
-		return Double.parseDouble(this.valor);
-	}
-
 	public String getDescricao() {
 		return descricao;
 	}
@@ -72,7 +66,7 @@ public class ServicoDTO {
 		moto.setId(motoId);
 		
 		Servico servico = new Servico();
-		servico.setValor(this.getValorToDouble());
+		servico.setValor(Double.parseDouble(valor));
 		servico.setData_inicio(Calendar.getInstance());
 		servico.setDescricao(descricao);
 		servico.setTipoServico(tipoServico);
