@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<div th:replace="base :: head"></div>
+	
+	<body class="d-flex flex-column justify-content-between">
+		<div>
+			<div th:replace="base :: logo"></div>
+			<!-- HOME CONTENT - BEGIN -->
+			<div class="container">
+				<div th:replace="moto/moto :: main (${motos})"></div>
+			</div>
+			<!-- HOME CONTENT - END -->
+		</div>
+		<div th:replace="base :: footer"></div>
+	</body>
+</html>
