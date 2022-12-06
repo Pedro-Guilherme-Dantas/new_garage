@@ -6,7 +6,21 @@
 		<div th:replace="base :: logo"></div>
 		<!-- HOME CONTENT - BEGIN -->
 		<div class="container d-flex justify-content-center">
-			
+			<div id="carouselMotos" class="carousel slide col-8" data-ride="carousel">
+				<div class="carousel-inner">
+					<div th:each="moto,iter : ${motos}" class="carousel-item" th:classappend="${iter.index == 0 ? 'active':''}">
+						<div th:replace="servico/adicionar/moto-components :: card-moto (${moto})"></div>
+					</div>
+				</div>
+				<a class="carousel-control-prev" href="#carouselMotos" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselMotos" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
 		</div>
 		<!-- HOME CONTENT - END -->
 		<div th:replace="base :: footer"></div>

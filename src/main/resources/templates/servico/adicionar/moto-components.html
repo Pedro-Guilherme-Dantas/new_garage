@@ -1,0 +1,32 @@
+<div th:fragment="card-moto (moto)" class="card mb-5 mt-5">
+    <div class="card-header header-card-moto">
+        <h3  th:text="${moto.modelo}"></h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group card-section">
+                    <h4 class="card-title"><i class="fa fa-motorcycle mr-1" aria-hidden="true"></i>Motocicleta</h4>
+                    <div class="form-row mb-3">
+                        <div class="col-md-6">
+                            <label>Marca</label>
+                            <input th:value="${moto.modelo}" disabled class="form-control" placeholder="Não preenchido"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Modelo</label>
+                            <input th:value="${'Kasinski'}" disabled class="form-control" placeholder="Não preenchido"/>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Placa</label>
+                            <input th:value="${moto.placa}" disabled class="form-control" placeholder="Não preenchido"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img class="card-img" th:src="${moto.urlImg}">
+            </div>
+        </div>
+        <a type="button" th:href="'moto/' + ${moto.id} + '/novo'" class="btn btn-primary">Selecionar</a>
+    </div>
+</div>
